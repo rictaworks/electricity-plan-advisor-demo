@@ -1,0 +1,10 @@
+{
+  "high_saving": "年間{saving}円の節約が見込めます（上位節約プラン）",
+  "moderate_saving": "年間{saving}円の節約が見込めます",
+  "night_time_based": "夜間割引が在宅パターンに最適です",
+  "bank_discount": "口座振替割引が適用されます（月{discount}円引き）",
+  "renewable": "再生可能エネルギー100%のエコプランです",
+  "standard": "標準的な従量電灯プランです",
+  "unsuitable_time_based": "昼間在宅が多い場合、夜間割引の効果が限定的です",
+  "high_saving_threshold": 50000
+}
