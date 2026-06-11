@@ -1,3 +1,1 @@
-{
-  "buildCommand": "npm install next@15.3.3 && npm run build"
-}
+{}
