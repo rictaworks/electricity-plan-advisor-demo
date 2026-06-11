@@ -28,7 +28,60 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {/* アンバーバナー */}
+        <div
+          style={{
+            background: "#fbbf24",
+            color: "#1e3a5f",
+            textAlign: "center",
+            padding: "0.5rem 1rem",
+            fontSize: "0.875rem",
+            fontWeight: 600,
+          }}
+        >
+          <i className="fas fa-flask" style={{ marginRight: "0.4rem" }}></i>
+          これはデモ版です。データはサーバー再起動時にリセットされる場合があります。
+          <a
+            href="https://rictaworks.jp/#demos"
+            style={{
+              marginLeft: "1.5rem",
+              color: "#1e3a5f",
+              textDecoration: "underline",
+              fontWeight: 700,
+            }}
+          >
+            ← デモ一覧へ
+          </a>
+        </div>
+        {children}
+        {/* 右下固定ご相談ボタン */}
+        <a
+          href="https://rictaworks.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            position: "fixed",
+            bottom: "1.5rem",
+            right: "1.5rem",
+            background: "#1e3a5f",
+            color: "#fff",
+            padding: "0.75rem 1.25rem",
+            borderRadius: "9999px",
+            fontWeight: 700,
+            fontSize: "0.9rem",
+            textDecoration: "none",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+            zIndex: 1000,
+            display: "flex",
+            alignItems: "center",
+            gap: "0.4rem",
+          }}
+        >
+          <i className="fas fa-comment-dots"></i>
+          ご相談はこちら
+        </a>
+      </body>
     </html>
   );
 }
