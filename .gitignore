@@ -47,6 +47,7 @@ coverage/
 htmlcov/
 playwright-report/
 test-results/
+backend/test_electricity.db
 
 # ビルド成果物
 *.tsbuildinfo

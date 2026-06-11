@@ -1,0 +1,8 @@
+[
+  {"age_group": "10代", "coefficient": 0.85},
+  {"age_group": "20代", "coefficient": 0.90},
+  {"age_group": "30代", "coefficient": 1.00},
+  {"age_group": "40代", "coefficient": 1.05},
+  {"age_group": "50代", "coefficient": 1.10},
+  {"age_group": "60代以上", "coefficient": 1.20}
+]
