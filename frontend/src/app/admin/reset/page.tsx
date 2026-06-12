@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { adminReset } from "@/lib/api";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
@@ -30,6 +31,10 @@ export default function AdminResetPage() {
 
   return (
     <main className="container" style={{ paddingTop: 32 }}>
+      <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: "#1e40af", textDecoration: "none", marginBottom: 16, fontSize: "0.9rem" }}>
+        <i className="fa-solid fa-arrow-left" />
+        トップへ戻る
+      </Link>
       <div className="card">
         <h1
           style={{ fontSize: "1.3rem", fontWeight: 800, marginBottom: 16, color: "#dc2626" }}
