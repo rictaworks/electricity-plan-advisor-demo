@@ -20,6 +20,13 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        {/* GA4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C04W1XKS16"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C04W1XKS16');`,
+          }}
+        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
