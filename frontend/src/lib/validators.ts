@@ -22,6 +22,9 @@ export function validateAgeGroups(groups: string[], memberCount: number): string
   if (groups.length !== memberCount) {
     return `世帯人数（${memberCount}人）分の年齢層を選択してください`;
   }
+  if (groups.some((g) => !g)) {
+    return "全メンバーの年齢層を選択してください";
+  }
   return null;
 }
 
