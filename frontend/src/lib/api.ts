@@ -51,6 +51,10 @@ export async function getResult(sessionId: string): Promise<SubmitResponse> {
   return fetchJson<SubmitResponse>(API_ENDPOINTS.RESULT(sessionId));
 }
 
-export async function adminReset(): Promise<{ message: string; deleted_sessions: number }> {
-  return fetchJson(API_ENDPOINTS.ADMIN_RESET, { method: "POST" });
+/** 管理用リセット。トークンは呼び出しごとに画面から受け取り、保存しない（ヘッダで送るだけ）。 */
+export async function adminReset(adminToken: string): Promise<{ message: string; deleted_sessions: number }> {
+  return fetchJson(API_ENDPOINTS.ADMIN_RESET, {
+    method: "POST",
+    headers: { "X-Admin-Token": adminToken },
+  });
 }

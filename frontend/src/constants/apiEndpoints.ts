@@ -1,4 +1,8 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+/**
+ * API の位置。フロントは Worker と同一オリジンで配信されるため、相対パスで呼ぶ（CORS 不要）。
+ * 旧 FastAPI 版は NEXT_PUBLIC_API_URL（別オリジン）を使っていたが、Workers 移行で廃止した。
+ */
+const API_BASE = "";
 
 export const API_ENDPOINTS = {
   SESSION: `${API_BASE}/api/session`,

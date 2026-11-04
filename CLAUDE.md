@@ -17,8 +17,8 @@ ssh / lftp / デプロイ系スクリプトでも削除コマンドの生成は�
 ## プロジェクト概要
 
 - **アプリ名**: 電力プラン自動提案システム（デモ版）
-- **スタック**: Next.js (TypeScript) + Python FastAPI + SQLite
-- **デプロイ**: Vercel（フロント）/ Render（API）
+- **スタック**: Next.js (TypeScript・静的書き出し) + Cloudflare Workers（Hono・TypeScript）+ D1（SQLite）
+- **デプロイ**: Cloudflare（Workers Assets ＋ Worker。日次リセットは Cron Trigger）。旧 Railway・Vercel 構成は 2026-10-22 から停止中。旧コード（`backend/`・`frontend/vercel.json`）は削除せず残している
 - **仕様書**: @electricity-plan-advisor-demo-spec.md
 - **開発ガイドライン**: @.claude/development-principles.md
 - **セキュリティ**: @.claude/OWASP10.md
@@ -56,8 +56,8 @@ ssh / lftp / デプロイ系スクリプトでも削除コマンドの生成は�
 4. **Green** — テストが全て通ることを確認する
 
 テストツール:
-- バックエンド: `pytest`
-- フロントエンド: `jest`
+- バックエンド（Worker）: `vitest`（`npm test`・`src/worker/**/*.test.ts`）。旧 FastAPI 版は `pytest`（`backend/tests`）
+- フロントエンド: `jest`（`cd frontend && npm test`）
 - E2E・フロント確認: `playwright`（`curl` / `wget --mirror` も使用可）
 
 ---

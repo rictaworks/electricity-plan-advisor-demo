@@ -1,0 +1,14 @@
+[
+  {"month": 1, "coefficient": 1.30},
+  {"month": 2, "coefficient": 1.25},
+  {"month": 3, "coefficient": 1.00},
+  {"month": 4, "coefficient": 0.85},
+  {"month": 5, "coefficient": 0.80},
+  {"month": 6, "coefficient": 0.90},
+  {"month": 7, "coefficient": 1.20},
+  {"month": 8, "coefficient": 1.35},
+  {"month": 9, "coefficient": 1.10},
+  {"month": 10, "coefficient": 0.85},
+  {"month": 11, "coefficient": 0.90},
+  {"month": 12, "coefficient": 1.20}
+]

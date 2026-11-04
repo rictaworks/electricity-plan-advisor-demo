@@ -71,3 +71,7 @@ electricity-plan-advisor-demo-spec.md
 
 # Claude Code 設定ディレクトリ
 .claude/
+
+# Cloudflare Workers ローカル状態・ローカル秘密
+.wrangler/
+.dev.vars

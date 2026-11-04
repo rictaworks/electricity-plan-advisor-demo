@@ -3,7 +3,7 @@
 
 > **対象エディション：デモ版**
 > **リポジトリ名：** `electricity-plan-advisor-demo`
-> **プラットフォーム：** ウェブ（Next.js + Python FastAPI + SQLite）
+> **プラットフォーム：** ウェブ（Next.js（静的書き出し）+ Cloudflare Workers（Hono）+ D1（SQLite））
 > **最終更新：** 2025年
 
 ---
@@ -31,11 +31,11 @@
 
 | 区分 | 技術 |
 |------|------|
-| フロントエンド | Next.js（TypeScript）|
-| バックエンド | Python FastAPI |
-| DB | SQLite（デモ版固定） |
+| フロントエンド | Next.js（TypeScript・静的書き出し） |
+| バックエンド | Cloudflare Workers（Hono・TypeScript） |
+| DB | Cloudflare D1（SQLite 互換・デモ版固定） |
 | 認証 | なし（セッションIDによるデータ分離） |
-| デプロイ | Vercel（フロント）／Render（API） |
+| デプロイ | Cloudflare（Workers Assets ＋ Worker。日次リセットは Cron Trigger） |
 
 ### 1.3 機能一覧
 
@@ -178,7 +178,7 @@ flowchart LR
         Result["結果表示\n(ランキング・グラフ)"]
     end
 
-    subgraph API["FastAPI サーバー"]
+    subgraph API["Workers API（Hono）"]
         Session["F1\nセッション管理"]
         Input["F2/F3\n入力バリデーション"]
         Estimate["F4\n使用量推定"]
@@ -222,7 +222,7 @@ flowchart LR
 sequenceDiagram
     actor User as ユーザー
     participant Browser as ブラウザ
-    participant API as FastAPI
+    participant API as Workers API
     participant DB as SQLite
 
     User->>Browser: アクセス
