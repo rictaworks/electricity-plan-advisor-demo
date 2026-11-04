@@ -1,0 +1,32 @@
+{
+  // Cloudflare Workers（Hono）の API と、Workers Assets（frontend/out の静的書き出し）を
+  // 1 つの Worker で配信する。/api/* のみ Worker を先に実行し、それ以外は静的アセットを返す。
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "electricity-plan-advisor-demo",
+  "main": "src/worker/index.ts",
+  "compatibility_date": "2026-09-01",
+  "account_id": "9c5183bedab008ccef3581056752fa6f",
+  "assets": {
+    "directory": "./frontend/out",
+    "run_worker_first": ["/api/*"]
+  },
+  // 既定は production。Cookie の Secure 属性は APP_ENV に関係なく常時付く。
+  // 管理トークン ADMIN_RESET_TOKEN は secret（wrangler secret put で設定。ここには書かない）。
+  "vars": {
+    "APP_ENV": "production"
+  },
+  // 2026-11-04 時点では未作成。`wrangler d1 create electricity_plan_advisor_demo` で作成し、
+  // 出力された database_id をここへ入れてから db:migrate:remote を実行する。
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "electricity_plan_advisor_demo",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // JST 03:00 = UTC 18:00（前日）の日次リセット（SPEC 1.3 F10）。
+  "triggers": {
+    "crons": ["0 18 * * *"]
+  }
+}

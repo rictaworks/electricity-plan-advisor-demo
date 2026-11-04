@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { adminReset } from "@/lib/api";
+import { ApiError, adminReset } from "@/lib/api";
 import ErrorMessage from "@/components/common/ErrorMessage";
 import LoadingSpinner from "@/components/common/LoadingSpinner";
 
+/** 管理トークンの入力欄。値は画面の状態にだけ持ち、保存しない。 */
 export default function AdminResetPage() {
+  const [adminToken, setAdminToken] = useState("");
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -18,13 +20,20 @@ export default function AdminResetPage() {
     setMessage(null);
     setShowConfirm(false);
     try {
-      const res = await adminReset();
+      const res = await adminReset(adminToken);
       setMessage(
         `リセット完了: ${res.deleted_sessions}件のセッションを削除しました`
       );
     } catch (err) {
-      setError(err instanceof Error ? err.message : "リセットに失敗しました");
+      if (err instanceof ApiError && err.status === 401) {
+        setError("管理トークンが正しくありません");
+      } else if (err instanceof ApiError && err.status === 404) {
+        setError("このリセットは無効になっています（管理トークンが未設定）");
+      } else {
+        setError(err instanceof Error ? err.message : "リセットに失敗しました");
+      }
     } finally {
+      setAdminToken("");
       setLoading(false);
     }
   };
@@ -45,6 +54,22 @@ export default function AdminResetPage() {
         <p style={{ color: "#6b7280", marginBottom: 24 }}>
           全セッションデータを削除します。この操作は取り消せません。
         </p>
+
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="admin-token" style={{ display: "block", fontWeight: 600, marginBottom: 6 }}>
+            <i className="fa-solid fa-key" style={{ marginRight: 6 }} />
+            管理トークン
+          </label>
+          <input
+            id="admin-token"
+            type="password"
+            autoComplete="off"
+            value={adminToken}
+            onChange={(e) => setAdminToken(e.target.value)}
+            className="form-input"
+            style={{ maxWidth: 360 }}
+          />
+        </div>
 
         <ErrorMessage message={error} />
 
@@ -96,6 +121,7 @@ export default function AdminResetPage() {
           <button
             className="btn"
             style={{ background: "#dc2626", color: "#fff" }}
+            disabled={adminToken === ""}
             onClick={() => setShowConfirm(true)}
           >
             <i className="fa-solid fa-trash-can" />

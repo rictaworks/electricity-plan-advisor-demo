@@ -1,0 +1,20 @@
+[
+  {"member_count": 1, "stay_home_pattern": "morning", "base_kwh_monthly": 100},
+  {"member_count": 1, "stay_home_pattern": "evening", "base_kwh_monthly": 120},
+  {"member_count": 1, "stay_home_pattern": "balanced", "base_kwh_monthly": 110},
+  {"member_count": 2, "stay_home_pattern": "morning", "base_kwh_monthly": 180},
+  {"member_count": 2, "stay_home_pattern": "evening", "base_kwh_monthly": 210},
+  {"member_count": 2, "stay_home_pattern": "balanced", "base_kwh_monthly": 195},
+  {"member_count": 3, "stay_home_pattern": "morning", "base_kwh_monthly": 260},
+  {"member_count": 3, "stay_home_pattern": "evening", "base_kwh_monthly": 300},
+  {"member_count": 3, "stay_home_pattern": "balanced", "base_kwh_monthly": 280},
+  {"member_count": 4, "stay_home_pattern": "morning", "base_kwh_monthly": 330},
+  {"member_count": 4, "stay_home_pattern": "evening", "base_kwh_monthly": 380},
+  {"member_count": 4, "stay_home_pattern": "balanced", "base_kwh_monthly": 350},
+  {"member_count": 5, "stay_home_pattern": "morning", "base_kwh_monthly": 400},
+  {"member_count": 5, "stay_home_pattern": "evening", "base_kwh_monthly": 460},
+  {"member_count": 5, "stay_home_pattern": "balanced", "base_kwh_monthly": 430},
+  {"member_count": 6, "stay_home_pattern": "morning", "base_kwh_monthly": 470},
+  {"member_count": 6, "stay_home_pattern": "evening", "base_kwh_monthly": 530},
+  {"member_count": 6, "stay_home_pattern": "balanced", "base_kwh_monthly": 500}
+]
